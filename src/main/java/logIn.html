@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Log in</title>
+</head>
+<body>
+<style>
+      body {background-color:violet;}
+    </style>
+    <h1 style="text-align: center">Enter your log in information.</h1>
+    <input type="text" name="Email:"><br>
+    <input type="text" name="password:"><br>
+<form action="login" method="post">
+    <input type="submit" value="login">
+    <span class="error">${error}</span>
+</form>
+<div style="text-align:center">
+<table>
+        <tr>
+    <td>Confirm Email : <input type="text" name="email2"></td>
+</tr>
+<tr>
+    <td>Password: <input type="password" name="pass2"></td>
+</tr>
+</table>
+</div>
+    </form>
+</body>
+</html>
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+
+
+public class Login extends HttpServlet {
+
+public void doPost(HttpServletRequest request, HttpServletResponse response)
+throws ServletException, IOException {
+
+response.setContentType("text/html");
+PrintWriter out = response.getWriter();
+
+String n=request.getParameter("userName");
+String p=request.getParameter("userPass");
+
+if(p.equals("servlet"){
+RequestDispatcher rd=request.getRequestDispatcher("servlet2");
+rd.forward(request, response);
+}
+else{
+out.print("Sorry UserName or Password Error!");
+RequestDispatcher rd=request.getRequestDispatcher("/index.html");
+rd.include(request, response);
+
+}
+}
+
+}
